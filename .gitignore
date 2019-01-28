@@ -41,3 +41,47 @@
 # System Files
 .DS_Store
 Thumbs.db
+
+# --------------------------------------------------
+
+# Autosave files
+/Applications/NetProject/*~
+
+# build
+/Applications/NetProject/[Oo]bj/
+/Applications/NetProject/[Bb]in/
+/Applications/NetProject/packages/
+/Applications/NetProject/TestResults/
+
+# globs
+/Applications/NetProject/Makefile.in
+/Applications/NetProject/*.DS_Store
+/Applications/NetProject/*.sln.cache
+/Applications/NetProject/*.suo
+/Applications/NetProject/*.cache
+/Applications/NetProject/*.pidb
+/Applications/NetProject/*.userprefs
+/Applications/NetProject/*.usertasks
+/Applications/NetProject/config.log
+/Applications/NetProject/config.make
+/Applications/NetProject/config.status
+/Applications/NetProject/aclocal.m4
+/Applications/NetProject/install-sh
+/Applications/NetProject/autom4te.cache/
+/Applications/NetProject/*.user
+/Applications/NetProject/*.tar.gz
+/Applications/NetProject/tarballs/
+/Applications/NetProject/test-results/
+/Applications/NetProject/Thumbs.db
+/Applications/NetProject/.vs/
+
+# Mac bundle stuff
+*.dmg
+*.app
+
+# resharper
+*_Resharper.*
+*.Resharper
+
+# dotCover
+*.dotCover
