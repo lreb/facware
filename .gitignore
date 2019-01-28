@@ -1,0 +1,43 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/Applications/AngularProject/dist
+/Applications/AngularProject/tmp
+/Applications/AngularProject/out-tsc
+
+# dependencies
+/Applications/AngularProject/node_modules
+
+# profiling files
+/Applications/AngularProject/chrome-profiler-events.json
+/Applications/AngularProject/speed-measure-plugin.json
+
+# IDEs and editors
+/Applications/AngularProject/.idea
+/Applications/AngularProject/.project
+/Applications/AngularProject/.classpath
+/Applications/AngularProject/.c9/
+/Applications/AngularProject/*.launch
+/Applications/AngularProject/.settings/
+/Applications/AngularProject/*.sublime-workspace
+
+# IDE - VSCode
+/Applications/AngularProject/.vscode/*
+!/Applications/AngularProject/.vscode/settings.json
+!/Applications/AngularProject/.vscode/tasks.json
+!/Applications/AngularProject/.vscode/launch.json
+!/Applications/AngularProject/.vscode/extensions.json
+
+# misc
+/Applications/AngularProject/.sass-cache
+/Applications/AngularProject/connect.lock
+/Applications/AngularProject/coverage
+/Applications/AngularProject/libpeerconnection.log
+/Applications/AngularProject/npm-debug.log
+/Applications/AngularProject/yarn-error.log
+/Applications/AngularProject/testem.log
+/Applications/AngularProject/typings
+
+# System Files
+/Applications/AngularProject/.DS_Store
+/Applications/AngularProject/Thumbs.db
