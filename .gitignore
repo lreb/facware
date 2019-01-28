@@ -39,5 +39,5 @@
 /Applications/AngularProject/typings
 
 # System Files
-/Applications/AngularProject/.DS_Store
-/Applications/AngularProject/Thumbs.db
+.DS_Store
+Thumbs.db
