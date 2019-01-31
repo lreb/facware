@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAPI", "NetCoreAPI\NetCoreAPI.csproj", "{E7B7C730-965B-4E13-84B1-5F8FEAD5726E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Contract", "NetCore.Contract\NetCore.Contract.csproj", "{6AF81AF2-3D36-4014-BF77-462E8E046603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Service.Logger", "NetCore.Service.Logger\NetCore.Service.Logger.csproj", "{C398890F-5C70-42D6-8247-290B45B994F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Models", "NetCore.Models\NetCore.Models.csproj", "{BEDED43E-15BE-4237-B6AF-D871F1A88F1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +19,17 @@ Global
 		{E7B7C730-965B-4E13-84B1-5F8FEAD5726E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7B7C730-965B-4E13-84B1-5F8FEAD5726E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7B7C730-965B-4E13-84B1-5F8FEAD5726E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF81AF2-3D36-4014-BF77-462E8E046603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF81AF2-3D36-4014-BF77-462E8E046603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF81AF2-3D36-4014-BF77-462E8E046603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF81AF2-3D36-4014-BF77-462E8E046603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C398890F-5C70-42D6-8247-290B45B994F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C398890F-5C70-42D6-8247-290B45B994F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C398890F-5C70-42D6-8247-290B45B994F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C398890F-5C70-42D6-8247-290B45B994F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEDED43E-15BE-4237-B6AF-D871F1A88F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEDED43E-15BE-4237-B6AF-D871F1A88F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEDED43E-15BE-4237-B6AF-D871F1A88F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEDED43E-15BE-4237-B6AF-D871F1A88F1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
