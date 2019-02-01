@@ -35,6 +35,7 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             // you request it and then every subsequent request is calling the same instance 
             // of the service. This means that all components are sharing the same service 
             // every time they need it. You are using the same instance always
+            
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
             // By calling services.AddScoped which will create the service once per request. 
