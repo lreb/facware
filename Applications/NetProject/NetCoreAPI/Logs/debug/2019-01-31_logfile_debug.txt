@@ -1,1 +1,0 @@
-2019-01-31 22:07:15.8706 DEBUG Here is debug message from our values controller.
