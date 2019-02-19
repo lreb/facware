@@ -40,7 +40,7 @@ namespace NetCore.API
 
             services.ConfigureIISIntegration();
 
-            services.ConfigureSqlContext(Configuration);
+            services.ConfigureMySqlContext(Configuration);
 
             services.ConfigureRepositoryWrapper();
 

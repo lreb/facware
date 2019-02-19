@@ -19,6 +19,7 @@ namespace NetCore.API
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            // .UseUrls("http://localhost:3000/")
                 .UseStartup<Startup>();
     }
 }

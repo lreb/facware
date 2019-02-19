@@ -64,6 +64,12 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             services.AddDbContext<DataAccessContext>(o => o.UseSqlServer(connectionString));
         }
 
+        public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
+        {
+            var connectionString = config["DataBaseContext:connectionString"];
+            services.AddDbContext<DataAccessContext>(o => o.UseMySql(connectionString));
+        }
+
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
