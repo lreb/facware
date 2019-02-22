@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NetCore.Contracts.Logger;
 using NetCore.Contracts.UnitOfWork;
 
 namespace NetCore.API.Controllers.V1
@@ -14,10 +15,12 @@ namespace NetCore.API.Controllers.V1
     public class AreasController : ControllerBase
     {
         private IUnitOfWork _uow;
+        private ILoggerManager _log;
 
-        public AreasController(IUnitOfWork repoWrapper)
+        public AreasController(IUnitOfWork repoWrapper, ILoggerManager log)
         {
             _uow = repoWrapper;
+            _log = log;
         }
 
         // GET api/values
@@ -29,6 +32,7 @@ namespace NetCore.API.Controllers.V1
         public IActionResult Get()
         {
             var a = _uow.Area.FindAll();
+            _log.LogTrace("Get all areas");
             return Ok(a);
             //return Ok(new { result = "OK" });
         }
