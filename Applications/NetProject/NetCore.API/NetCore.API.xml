@@ -4,11 +4,51 @@
         <name>NetCore.API</name>
     </assembly>
     <members>
+        <member name="T:NetCore.API.Controllers.V1.AreasController">
+            <summary>
+            Shopfloor areas
+            </summary>
+        </member>
         <member name="M:NetCore.API.Controllers.V1.AreasController.Get">
             <summary>
             Return all areas
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.AreasPropertiesController">
+            <summary>
+            Shopfloor areas properties
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.CustomersController">
+            <summary>
+            Customers catalogs
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.ProductionPlansController">
+            <summary>
+            Productions plans for the factories
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.ProductionPlansDetailsController">
+            <summary>
+            Production plan detail with quantities for rage of time
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.ProductionPlansPropertiesController">
+            <summary>
+            Properties to save any custom data related with the Production plan
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.ShiftsController">
+            <summary>
+            Shifts for the factory
+            </summary>
+        </member>
+        <member name="T:NetCore.API.Controllers.V1.UsersController">
+            <summary>
+            Users in the application
+            </summary>
         </member>
     </members>
 </doc>

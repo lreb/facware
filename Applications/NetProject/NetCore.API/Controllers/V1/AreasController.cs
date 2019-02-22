@@ -9,6 +9,9 @@ using NetCore.Contracts.UnitOfWork;
 
 namespace NetCore.API.Controllers.V1
 {
+    /// <summary>
+    /// Shopfloor areas
+    /// </summary>
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")] // https://localhost:44302/api/v1.0/Areas
     [ApiController]
