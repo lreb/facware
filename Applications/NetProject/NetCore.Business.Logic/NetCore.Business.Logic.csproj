@@ -5,9 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Services\Dashboards\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
     <Folder Include="RepositoryBase\" />
   </ItemGroup>
   <ItemGroup>

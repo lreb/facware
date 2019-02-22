@@ -39,10 +39,16 @@ namespace NetCore.API
             });
 
             services.ConfigureIISIntegration();
-
-            services.ConfigureMySqlContext(Configuration);
+            // MSSQL
+            services.ConfigureSqlContext(Configuration);
+            // MySQL
+            // services.ConfigureMySqlContext(Configuration);
 
             services.ConfigureRepositoryWrapper();
+
+            services.AddApiVersioning();
+
+            services.ApiDocumentation();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -65,6 +71,12 @@ namespace NetCore.API
             app.UseHttpsRedirection();
 
             // app.UseAuthentication();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+            app.UseSwaggerUI(o => {
+                o.SwaggerEndpoint("/swagger/v1/swagger.json", "eDashboard API");
+            });
 
             app.UseMvc();
         }

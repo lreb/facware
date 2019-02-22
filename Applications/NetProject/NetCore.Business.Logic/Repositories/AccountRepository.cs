@@ -6,11 +6,11 @@ using NetCore.Data.Access.Models;
 
 namespace NetCore.Business.Logic.Repositories
 {
-    public class AccountRepository : RepositoryBase<Account>, IAccountRepository
-    {
-        public AccountRepository(DataAccessContext repositoryContext)
-            : base(repositoryContext)
-        {
-        }
-    }
+    //public class AccountRepository : RepositoryBase<Account>, IAccountRepository
+    //{
+    //    public AccountRepository(DataAccessContext repositoryContext)
+    //        : base(repositoryContext)
+    //    {
+    //    }
+    //}
 }

@@ -4,14 +4,22 @@ using System.Linq;
 using System.Linq.Expressions;
 using NetCore.Contracts.Repository;
 using NetCore.Data.Access;
+using NetCore.Data.Access.DataAccessModels.Dashboards;
 
 namespace NetCore.Business.Logic.RepositoryBase
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : class // IEntity
     {
-        protected DataAccessContext RepositoryContext { get; set; }
+        //protected DataAccessContext RepositoryContext { get; set; }
 
-        public RepositoryBase(DataAccessContext repositoryContext)
+        //public RepositoryBase(DataAccessContext repositoryContext)
+        //{
+        //    this.RepositoryContext = repositoryContext;
+        //}
+
+        protected DashboardsContext RepositoryContext { get; set; }
+
+        public RepositoryBase(DashboardsContext repositoryContext)
         {
             this.RepositoryContext = repositoryContext;
         }

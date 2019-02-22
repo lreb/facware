@@ -22,8 +22,9 @@ namespace NetCore.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var a = _uow.Account.FindAll();
-            return Ok(a);
+            //var a = _uow.Area.FindAll();
+            //return Ok(a);
+            return Ok(new { result = "OK" });
         }
 
         /*[HttpPost, Route("login")]

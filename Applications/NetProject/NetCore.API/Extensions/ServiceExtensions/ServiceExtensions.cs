@@ -7,6 +7,12 @@ using NetCore.Services.Logger;
 using NetCore.Data.Access;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using NetCore.Data.Access.DataAccessModels.Dashboards;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
+using System;
+using System.IO;
 
 namespace NetCoreAPI.Extensions.ServiceExtensions
 {
@@ -60,19 +66,56 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             //services.AddDbContext<RepositoryContext>(o => o.UseMySql(connectionString));
             //services.AddDbContext<RepositoryContext>(options =>
             //options.UseSqlServer("DataBaseContext"));
-            var connectionString = config["DataBaseContext:connectionString"];
-            services.AddDbContext<DataAccessContext>(o => o.UseSqlServer(connectionString));
+            var connectionString = config["DataBaseContextSQL:connectionString"];
+            services.AddDbContext<DashboardsContext>(o => o.UseSqlServer(connectionString));
         }
 
         public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config["DataBaseContext:connectionString"];
+            var connectionString = config["DataBaseContextMySQL:connectionString"];
             services.AddDbContext<DataAccessContext>(o => o.UseMySql(connectionString));
         }
 
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+
+        public static void ApiVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(o => {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+        }
+
+        public static void ApiDocumentation(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info {
+                    Title = "eDashboardAPI",
+                    Version = "v1",
+                    Description = "IT NCR CHIH",
+                    TermsOfService = "JABIL",
+                    Contact = new Contact
+                    {
+                        Name = "Luis Raúl Espinoza Barboza",
+                        Email = "luis_espinoza6@jabil.com",
+                        // Url = "https://twitter.com/spboyer"
+                    },
+                    License = new License
+                    {
+                        Name = "Use under LICX",
+                        Url = "https://example.com/license"
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });            
         }
     }
 }

@@ -9,7 +9,6 @@
     <Folder Include="Logger\" />
     <Folder Include="Service\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Entity\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NetCore.Data.Access\NetCore.Data.Access.csproj" />
