@@ -13,6 +13,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace NetCoreAPI.Extensions.ServiceExtensions
 {
@@ -90,6 +93,24 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             });
         }
 
+        public static void AddAuthenticationJWT(this IServiceCollection services)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = "http://localhost:5000",
+                    ValidAudience = "http://localhost:5000",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                };
+            });
+        }
         public static void ApiDocumentation(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
@@ -117,5 +138,7 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
                 c.IncludeXmlComments(xmlPath);
             });            
         }
+
+        
     }
 }

@@ -48,6 +48,8 @@ namespace NetCore.API
 
             services.AddApiVersioning();
 
+            services.AddAuthenticationJWT();
+
             services.ApiDocumentation();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -70,7 +72,7 @@ namespace NetCore.API
 
             app.UseHttpsRedirection();
 
-            // app.UseAuthentication();
+            app.UseAuthentication();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NetCore.Contracts.Logger;
@@ -14,6 +15,7 @@ namespace NetCore.API.Controllers.V1
     /// </summary>
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")] // https://localhost:44302/api/v1.0/Areas
+    [Authorize]
     [ApiController]
     public class AreasController : ControllerBase
     {
