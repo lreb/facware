@@ -20,6 +20,11 @@
             Shopfloor areas properties
             </summary>
         </member>
+        <member name="T:NetCore.API.Controllers.V1.AuthenticationsController">
+            <summary>
+            Authentication endpoint
+            </summary>
+        </member>
         <member name="T:NetCore.API.Controllers.V1.CustomersController">
             <summary>
             Customers catalogs
