@@ -1,0 +1,335 @@
+<div class="content bg-gray-lighter">
+  <div class="row items-push">
+    <div class="col-sm-3">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Date From</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="dateFrom" placeholder="2019/20/01">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Date To</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="dateTo" placeholder="2019/20/20">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-sm-9 text-right hidden-xs">
+        <h1>Production Plan: <a href="javascript:void(0)">ATM MAIN 1</a></h1>
+        <!-- <ol class="breadcrumb push-10-t">
+            <li>eDashboard</li>
+            <li>Dasboards</li>
+            <li><a class="link-effect" href="">Production Plan</a></li>
+        </ol> -->
+    </div>
+  </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="exampleInputName2">Line </label>
+      <select class="form-control">
+        <option>ATM 1</option>
+        <option>ATM 2</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail2">Shift </label>
+      <select class="form-control">
+        <option>Shift 1</option>
+        <option>Shift 2</option>
+        <option>Shift 3</option>
+        <option>Shift 4</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-square">Get Plan</button>
+    <!-- Plan Revision -->
+    <div class="form-group">
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group" role="group">
+          <label for="revision">Revision </label>
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+        <div class="btn-group" role="group">
+          <button class="btn btn-success btn-square" type="button"><i class="fa fa-edit"></i> Edit</button>
+          <button class="btn btn-primary btn-square" type="button"><i class="fa fa-save"></i> Save Revision</button>
+          <button class="btn btn-danger btn-square" type="button"><i class="fa fa-ban"></i> Cancel</button>
+          <button class="btn btn-primary btn-square" type="button"><i class="fa fa-share-square"></i> Publish</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button class="btn btn-success btn-square" type="button"><i class="fa fa-sync"></i> Refresh</button>
+        </div>
+        <!-- open -->
+        <div class="btn-group" role="group"> 
+          <button class="btn btn-success btn-square dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              Actions <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-header">Data</li>
+            <li>
+                <a tabindex="-1" href="javascript:void(0)"><i class="fa fa-file-download"></i> Get Template</a>
+            </li>
+            <li>
+                <a tabindex="-1" href="javascript:void(0)"><i class="fa fa-file-import"></i> Import</a>
+            </li>
+            <li>
+                <a tabindex="-1" href="javascript:void(0)"><i class="fa fa-file-export"></i> Export</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Plan</li>
+            <li>
+                <a tabindex="-1" href="javascript:void(0)"><i class="fa fa-plus"></i> Add Product</a>
+            </li>
+            <!-- <li>
+                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span>Messages</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">Historical</li>
+            <li *ngIf="!showOriginVariable">
+                <a tabindex="-1" href="javascript:void(0)" (click)="showOrigin()"><i class="fa fa-eye"></i> Show original Plan</a>
+            </li>
+            <li *ngIf="showOriginVariable">
+                <a tabindex="-1" href="javascript:void(0)" (click)="hideOrigin()"><i class="fa fa-eye-slash"></i> Hide original Plan</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Plan Revision -->
+    
+  </form>
+    
+</div>
+
+<div class="block">
+  <div class="block-header">
+    <button  class="btn btn-success btn-square">Add Product</button>
+    
+      <!-- <div class="block-options">
+          <code>.table-condensed</code>
+      </div>
+      <h3 class="block-title">Condensed Table</h3> -->
+  </div>
+  <div class="block-content">
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+              <th class="text-center table-header" ></th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'" >Monday</th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'">Tuesday</th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'">Wednesday</th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'">Thursday</th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'">Friday</th>
+              <th class="text-center table-header" [attr.colspan]="showOriginVariable ? '4' : '3'"><b>Total</b></th>
+                <!-- <th class="hidden-xs" style="width: 15%;">Access</th>
+                <th class="text-center" style="width: 100px;">Actions</th> -->
+            </tr>
+            <tr>
+              <th class="table-Sub-Header text-center">Family</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+              <th *ngIf="showOriginVariable" class="originClass">Orig.</th>
+              <th class="table-Sub-Header">Plan</th>
+              <th class="table-Sub-Header">Real</th>
+              <th class="table-Sub-Header">Delta</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="text-center" >
+                6688
+              <button class="clickable" data-toggle="collapse" id="6688" data-target=".6688" (click)="show=show">
+                <!-- <i *ngIf="!show" class="toggleRowIcon fa fa-plus-square pull-left"></i> -->
+                <!--<i *ngIf="show" class="toggleRowIcon fa fa-minus-square pull-left"></i>   -->
+                +/-
+              </button>
+            </th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+              <!-- <td class="text-center">1</td>
+              <td>Judy Alvarez</td>
+              <td class="hidden-xs">
+                  <span class="label label-success">VIP</span>
+              </td>
+              <td class="text-center">
+                  <div class="btn-group">
+                      <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                  </div>
+              </td> -->
+          </tr>
+          <tr class="collapse 6688">
+              <th class="text-center">6688MC123</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+          </tr>
+          <tr>
+              <th class="text-center" >
+                  6684
+                <button class="clickable" data-toggle="collapse" id="6684" data-target=".6684" (click)="show=show">
+                  <!-- <i *ngIf="!show" class="toggleRowIcon fa fa-plus-square pull-left"></i> -->
+                  <!--<i *ngIf="show" class="toggleRowIcon fa fa-minus-square pull-left"></i>   -->
+                  +/-
+                </button>
+              </th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+                <!-- <td class="text-center">1</td>
+                <td>Judy Alvarez</td>
+                <td class="hidden-xs">
+                    <span class="label label-success">VIP</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td> -->
+            </tr>
+            <tr class="collapse 6684">
+              <th class="text-center">6684MC123</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+              <th *ngIf="showOriginVariable" class="originClass">2</th>
+              <th>5</th>
+              <th>2</th>
+              <th>-3</th>
+            </tr>
+          <tr>
+            <th class="text-center" ><b>Total</b></th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+            <th *ngIf="showOriginVariable" class="originClass">2</th>
+            <th>5</th>
+            <th>2</th>
+            <th>-3</th>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

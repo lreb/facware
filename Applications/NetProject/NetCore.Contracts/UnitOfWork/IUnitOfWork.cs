@@ -1,6 +1,7 @@
 ﻿using System;
 using NetCore.Contracts.Entity;
 using NetCore.Contracts.Entity.Dashboards;
+using NetCore.Contracts.Entity.Dashboards.Services;
 
 namespace NetCore.Contracts.UnitOfWork
 {
@@ -17,6 +18,11 @@ namespace NetCore.Contracts.UnitOfWork
         ICustomersRepository Customer { get; }
         IShiftsRepository Shift { get; }
         IUsersRepository User { get; }
+        // store procedure
+        IStoreProceduresRepository StoreProcedure { get; }
+
+        // services
+        IAreasPropertiesService AreasPropertiesService { get; }
 
         int Commit();
     }

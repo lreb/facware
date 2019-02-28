@@ -16,27 +16,35 @@ using NLog;
 
 namespace NetCore.API
 {
+    /// <summary>
+    /// contaiins all application configurations
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Set global configurations
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
-
+        /// <summary>
+        /// Service to inyect configurations
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// set all services to use in the application
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureLoggerService();
 
-            services.AddCors(option => {
-                option.AddPolicy("EnableCORS", builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
-                });
-            });
+            services.ConfigureCors();
 
             services.ConfigureIISIntegration();
             // MSSQL
@@ -56,6 +64,11 @@ namespace NetCore.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// initialize all services
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -68,8 +81,8 @@ namespace NetCore.API
                 app.UseHsts();
             }
 
-            app.UseCors("EnableCORS");
-
+            //app.UseCors("EnableCORS");
+            
             app.UseHttpsRedirection();
 
             app.UseAuthentication();

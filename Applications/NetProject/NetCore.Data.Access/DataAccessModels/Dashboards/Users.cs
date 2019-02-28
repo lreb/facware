@@ -8,12 +8,6 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
     [Table("Users", Schema = "productionplan")]
     public partial class Users
     {
-        public Users()
-        {
-            Areas = new HashSet<Areas>();
-            AreasProperties = new HashSet<AreasProperties>();
-        }
-
         public long Id { get; set; }
         [Required]
         [StringLength(100)]
@@ -24,13 +18,12 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
         public string LastName { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+        [StringLength(150)]
+        public string Hash { get; set; }
+        [StringLength(150)]
+        public string Salt { get; set; }
         public bool? Enabled { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? UpdatedDate { get; set; }
-
-        [InverseProperty("User")]
-        public virtual ICollection<Areas> Areas { get; set; }
-        [InverseProperty("User")]
-        public virtual ICollection<AreasProperties> AreasProperties { get; set; }
     }
 }

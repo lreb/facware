@@ -19,6 +19,8 @@ namespace NetCore.Business.Logic.RepositoryBase
 
         protected DashboardsContext RepositoryContext { get; set; }
 
+        protected Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction _transaction { get; set; }
+
         public RepositoryBase(DashboardsContext repositoryContext)
         {
             this.RepositoryContext = repositoryContext;
@@ -37,14 +39,15 @@ namespace NetCore.Business.Logic.RepositoryBase
         public void Create(T entity)
         {
             this.RepositoryContext.Set<T>().Add(entity);
+            // return entity;
         }
 
         public void Update(T entity)
         {
             this.RepositoryContext.Set<T>().Update(entity);
-            this.RepositoryContext.Database.BeginTransaction();
-            this.RepositoryContext.Database.RollbackTransaction();
-            this.RepositoryContext.Database.CommitTransaction();
+            //this.RepositoryContext.Database.BeginTransaction();
+            //this.RepositoryContext.Database.RollbackTransaction();
+            //this.RepositoryContext.Database.CommitTransaction();
         }
 
         public void Delete(T entity)
@@ -60,6 +63,21 @@ namespace NetCore.Business.Logic.RepositoryBase
         public T GetById(long id)
         {
             return this.RepositoryContext.Set<T>().Find(id);
+        }
+
+        public void CreateTransaction()
+        {
+            _transaction = this.RepositoryContext.Database.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            _transaction.Commit();
+        }
+
+        public void Rollback()
+        {
+            _transaction.Rollback();
         }
     }
 }

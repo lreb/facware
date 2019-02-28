@@ -8,5 +8,7 @@ namespace NetCore.Contracts.Entity.Dashboards
 {
     public interface IAreasRepository : IRepositoryBase<Areas>
     {
+        void CompareAndUpdate(Areas dbArea, Areas area);
+        void LogicalDelete(Areas dbArea);
     }
 }

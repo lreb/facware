@@ -12,10 +12,9 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
         {
             AreasProperties = new HashSet<AreasProperties>();
         }
-
+        [Key]
         public long Id { get; set; }
         public long CustomerId { get; set; }
-        public long UserId { get; set; }
         [Required]
         [StringLength(20)]
         public string Name { get; set; }
@@ -30,9 +29,6 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
         [ForeignKey("CustomerId")]
         [InverseProperty("Areas")]
         public virtual Customers Customer { get; set; }
-        [ForeignKey("UserId")]
-        [InverseProperty("Areas")]
-        public virtual Users User { get; set; }
         [InverseProperty("Area")]
         public virtual ICollection<AreasProperties> AreasProperties { get; set; }
     }

@@ -10,13 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace NetCore.API
 {
+    /// <summary>
+    /// Configure application builder/startup
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// startup
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
         }
-
+        /// <summary>
+        /// Set the configuration for the aplication start
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             // .UseUrls("http://localhost:3000/")

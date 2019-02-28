@@ -1,0 +1,163 @@
+
+
+<!-- Page Container -->
+<!--
+    Available Classes:
+
+    'enable-cookies'             Remembers active color theme between pages (when set through color theme list)
+
+    'sidebar-l'                  Left Sidebar and right Side Overlay
+    'sidebar-r'                  Right Sidebar and left Side Overlay
+    'sidebar-mini'               Mini hoverable Sidebar (> 991px)
+    'sidebar-o'                  Visible Sidebar by default (> 991px)
+    'sidebar-o-xs'               Visible Sidebar by default (< 992px)
+
+    'side-overlay-hover'         Hoverable Side Overlay (> 991px)
+    'side-overlay-o'             Visible Side Overlay by default (> 991px)
+
+    'side-scroll'                Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (> 991px)
+
+    'header-navbar-fixed'        Enables fixed header
+-->
+<div id="page-container" class="sidebar-l side-scroll">
+
+    <!-- Header -->
+<header id="header-navbar" class="content-mini content-mini-full">
+        <!-- Header Navigation Right -->
+        <ul class="nav-header pull-right">
+            <li>
+                <div class="btn-group">
+                    <button class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
+                        <!-- <img src="assets/img/avatars/avatar10.jpg" alt="Avatar"> -->
+                        <i class="fa fa-user-circle"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-header">Profile</li>
+                        <li>
+                            <a tabindex="-1" href="base_pages_inbox.html">
+                                <i class="fa fa-puzzle-piece pull-right"></i>
+                                <!-- <span class="badge badge-primary pull-right">3</span> -->
+                                Areas
+                            </a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="base_pages_profile.html">
+                                <i class="fa fa-stream pull-right"></i>
+                                <!-- <span class="badge badge-success pull-right">1</span> -->
+                                Revisions
+                            </a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-user-shield pull-right"></i>
+                                Roles
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Actions</li>
+                        <li>
+                            <a tabindex="-1" [routerLink]="['/login']">
+                                <i class="si si-logout pull-right"></i>Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- END Header Navigation Right -->
+    
+        <!-- Header Navigation Left -->
+        <ul class="nav-header pull-left">
+            <li>
+                <!-- Opens the Apps modal found at the bottom of the page, before including JS code -->
+                <button class="btn btn-default pull-right" data-toggle="modal" data-target="#apps-modal" type="button">
+                    <i class="si si-grid"></i>
+                </button>
+            </li>
+            <li class="visible-xs">
+                <!-- Toggle class helper (for .js-header-search below), functionality initialized in App() -> uiToggleClass() -->
+                <button class="btn btn-default" data-toggle="class-toggle" data-target=".js-header-search" data-class="header-search-xs-visible" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </li>
+        </ul>
+        <!-- END Header Navigation Left -->
+</header>
+<!-- END Header -->
+
+<main>
+    <div>
+
+    </div>
+</main>
+
+<!-- Page Content -->
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+<!-- End Page Content -->
+
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- END Footer -->
+</div>
+
+<!-- Apps Modal -->
+<!-- Opens from the button in the header -->
+<div class="modal fade" id="apps-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-sm modal-dialog modal-dialog-top">
+        <div class="modal-content">
+            <!-- Apps Block -->
+            <div class="block block-themed block-transparent">
+                <div class="block-header bg-primary-dark">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Apps</h3>
+                </div>
+                <div class="block-content">
+                    <div class="row text-center">
+                        <div class="col-xs-6">
+                            <a class="block block-rounded" [routerLink]="['/dashboard/productionplan']" data-dismiss="modal">
+                                <div class="block-content text-white bg-primary">
+                                    <i class="si si-speedometer fa-2x"></i>
+                                    <div class="font-w600 push-15-t push-15">Plans</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="block block-rounded" [routerLink]="['/dashboard/productionplan/areas']" data-dismiss="modal">
+                                <div class="block-content text-white bg-flat">
+                                    <i class="si si-speedometer fa-2x"></i>
+                                    <div class="font-w600 push-15-t push-15">Areas</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="block block-rounded" [routerLink]="['/dashboard/productionplan/revisions']" data-dismiss="modal">
+                                <div class="block-content text-white bg-danger">
+                                    <i class="si si-rocket fa-2x"></i>
+                                    <div class="font-w600 push-15-t push-15">Revisions</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                                <a class="block block-rounded" [routerLink]="['/dashboard/productionplan/roles']" data-dismiss="modal">
+                                    <div class="block-content text-white bg-modern">
+                                        <i class="si si-rocket fa-2x"></i>
+                                        <div class="font-w600 push-15-t push-15">Roles</div>
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Apps Block -->
+        </div>
+    </div>
+</div>
+<!-- END Apps Modal -->

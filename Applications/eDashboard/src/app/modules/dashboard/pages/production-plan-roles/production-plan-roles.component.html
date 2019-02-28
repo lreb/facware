@@ -1,0 +1,95 @@
+<!-- Page Header -->
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-7">
+          <!-- class="page-heading"   -->
+          <h1>
+            Users Setup
+          </h1>
+        </div>
+        <div class="col-sm-5 text-right hidden-xs">
+            <ol class="breadcrumb push-10-t">
+                <li>Production Plan</li>
+                <li><a class="link-effect" href="javascript:void(0)">Users</a></li>
+            </ol>
+        </div>
+    </div>
+  </div>
+  <!-- END Page Header -->
+  
+  <div class="block">
+    <div class="block-header">
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group" role="group">
+          <button  class="btn btn-success btn-square"><i class="fa fa-user-plus"></i> Add user</button>
+        </div>
+        <div class="btn-group" role="group">
+          <!-- Search Form -->
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="exampleInputName2">Users</label>
+              <select class="form-control" name="users" id="users">
+                <option value="all">All</option>
+                <option value="inactive">Inactive</option>
+                <option value="active">Active</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Employee ID:</label>
+              <input type="text" class="form-control" id="exampleInputName2" placeholder="1421574">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail2">Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Luis Espinoza">
+            </div>
+          </form>
+          <!-- End Search Form -->
+        </div>
+        
+        <div class="btn-group" role="group">
+          <button  class="btn btn-success btn-square"><i class="fa fa-search"></i> Search</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button  class="btn btn-primary btn-square"><i class="fa fa-save"></i> Save</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button  class="btn btn-default btn-square"><i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="block-content">
+        <table class="table table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1421574</td>
+              <td>Luis</td>
+              <td>
+                <select class="form-control" name="role" id="role">
+                  <option value="all">Admin</option>
+                  <option value="inactive">Planning</option>
+                  <option value="active">Some</option>
+                </select>
+              </td>
+              <td>
+                  <!-- https://www.npmjs.com/package/ngx-toggle-switch -->
+                <ui-switch></ui-switch></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+      

@@ -25,6 +25,7 @@ CREATE TABLE [productionplan].[Customers] (
     CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED ([Id] ASC),
 );
 GO
+SELECT * FROM productionplan.Users;
 
 CREATE TABLE [productionplan].[Users] (
     [Id]			BIGINT       IDENTITY (1, 1) NOT NULL,
@@ -32,6 +33,8 @@ CREATE TABLE [productionplan].[Users] (
     [Name]			VARCHAR (100),
 	[LastName]		VARCHAR (100),
 	[Email]			VARCHAR (100),
+	[Hash]			VARCHAR (150),
+	[Salt]			VARCHAR (150),
 	[Enabled]		BIT			DEFAULT 1, 
 	[UpdatedDate]	DATETIME      Default GETDATE(),
     CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([Id] ASC),
@@ -41,33 +44,29 @@ GO
 CREATE TABLE [productionplan].[Areas] (
     [Id]			BIGINT        IDENTITY (1, 1) NOT NULL,
 	[CustomerId]	BIGINT NOT NULL,
-    [UserId]		BIGINT NOT NULL,
     [Name]			VARCHAR (20)  NOT NULL,
     [Type]			VARCHAR (20),
     [Description]	VARCHAR (100),
     [Enabled]		BIT			DEFAULT 1, 
     [UpdateDate]	DATETIME      Default GETDATE(),
     CONSTRAINT [PK_Areas] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Areas_Customers] FOREIGN KEY ([CustomerId]) REFERENCES [productionplan].[Customers] (Id),
-    CONSTRAINT [FK_Areas_Users] FOREIGN KEY ([UserId]) REFERENCES [productionplan].[Users] ([Id])
+    CONSTRAINT [FK_Areas_Customers] FOREIGN KEY ([CustomerId]) REFERENCES [productionplan].[Customers] (Id)
 );
 GO
 
 CREATE TABLE [productionplan].[AreasProperties] (
     [Id]       BIGINT        IDENTITY (1, 1) NOT NULL,
 	[AreaId]     BIGINT NOT NULL,
-    [UserId]     BIGINT NOT NULL,
 	[Group]     VARCHAR (20)  NOT NULL,
     [Parameter]     VARCHAR (20)  NOT NULL,
     [Value]         VARCHAR (20)  NOT NULL,
     [Enabled]		BIT			DEFAULT 1, 
     [UpdateDate]	DATETIME      Default GETDATE(),
     CONSTRAINT [PK_AreasProperties] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_AreasProperties_Areas] FOREIGN KEY ([AreaId]) REFERENCES [productionplan].[Areas] (Id),
-    CONSTRAINT [FK_AreasProperties_Users] FOREIGN KEY ([UserId]) REFERENCES [productionplan].[Users] ([Id])
+    CONSTRAINT [FK_AreasProperties_Areas] FOREIGN KEY ([AreaId]) REFERENCES [productionplan].[Areas] (Id)
 );
 GO
-
+SELECT * FROM productionplan.Areas;
 CREATE TABLE [productionplan].[Shifts] (
     [Id]			BIGINT        IDENTITY (1, 1) NOT NULL,
 	[CustomerId]	BIGINT NOT NULL,
@@ -130,3 +129,6 @@ CREATE TABLE [productionplan].[ProductionPlansProperties] (
 	CONSTRAINT [FK_ProductionPlansDetails_Users] FOREIGN KEY ([ProductionPlanId]) REFERENCES [productionplan].[Users] (Id),
 );
 GO
+
+
+SELECT * FROM area

@@ -19,20 +19,32 @@ using System.Text;
 
 namespace NetCoreAPI.Extensions.ServiceExtensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ServiceExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureCors(this IServiceCollection services)
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
+                options.AddPolicy("EnableCORS",
+                    builder => builder
+                    .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowCredentials()
+                    .Build());
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureIISIntegration(this IServiceCollection services)
         {
             services.Configure<IISOptions>(options =>
@@ -40,7 +52,10 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
 
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             // https://code-maze.com/net-core-web-development-part3/#configuringLogger
@@ -62,7 +77,11 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             // created again for every single component which needs it
             //services.AddTransient<ILoggerManager, LoggerManager>();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration config)
         {
             //var connectionString = config["mysqlconnection:connectionString"];
@@ -72,18 +91,28 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
             var connectionString = config["DataBaseContextSQL:connectionString"];
             services.AddDbContext<DashboardsContext>(o => o.UseSqlServer(connectionString));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
         public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
         {
             var connectionString = config["DataBaseContextMySQL:connectionString"];
             services.AddDbContext<DataAccessContext>(o => o.UseMySql(connectionString));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ApiVersioning(this IServiceCollection services)
         {
             services.AddApiVersioning(o => {
@@ -92,7 +121,10 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void AddAuthenticationJWT(this IServiceCollection services)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -111,6 +143,10 @@ namespace NetCoreAPI.Extensions.ServiceExtensions
                 };
             });
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void ApiDocumentation(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>

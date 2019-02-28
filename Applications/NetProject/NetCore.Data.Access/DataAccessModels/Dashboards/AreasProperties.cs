@@ -8,9 +8,9 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
     [Table("AreasProperties", Schema = "productionplan")]
     public partial class AreasProperties
     {
+        [Key]
         public long Id { get; set; }
         public long AreaId { get; set; }
-        public long UserId { get; set; }
         [Required]
         [StringLength(20)]
         public string Group { get; set; }
@@ -27,8 +27,5 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
         [ForeignKey("AreaId")]
         [InverseProperty("AreasProperties")]
         public virtual Areas Area { get; set; }
-        [ForeignKey("UserId")]
-        [InverseProperty("AreasProperties")]
-        public virtual Users User { get; set; }
     }
 }

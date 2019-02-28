@@ -9,10 +9,65 @@
             Shopfloor areas
             </summary>
         </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.#ctor(NetCore.Contracts.UnitOfWork.IUnitOfWork,NetCore.Contracts.Logger.ILoggerManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repoWrapper">Unit of work service</param>
+            <param name="log">logger service</param>
+        </member>
         <member name="M:NetCore.API.Controllers.V1.AreasController.Get">
             <summary>
             Return all areas
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.GetEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.GetWithSP">
+            <summary>
+            Example to retun sp
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.GetAreaById(System.Int64)">
+            <summary>
+            Get area by id
+            </summary>
+            <param name="id">area id</param>
+            <returns>one area</returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.Create(NetCore.Data.Access.DataAccessModels.Dashboards.Areas)">
+            <summary>
+            Create new area
+            </summary>
+            <param name="area">area model</param>
+            <returns>area created</returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.CreateWithProperties(NetCore.Data.Access.DataAccessModels.Dashboards.Areas)">
+            <summary>
+            CreateArea and properties
+            </summary>
+            <param name="area"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.Update(System.Int64,NetCore.Data.Access.DataAccessModels.Dashboards.Areas)">
+            <summary>
+            Update area
+            </summary>
+            <param name="id">area id to update</param>
+            <param name="area">new area data</param>
+            <returns>area updated</returns>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AreasController.Delete(System.Int64)">
+            <summary>
+            Delete area
+            </summary>
+            <param name="id">area id</param>
             <returns></returns>
         </member>
         <member name="T:NetCore.API.Controllers.V1.AreasPropertiesController">
@@ -24,6 +79,20 @@
             <summary>
             Authentication endpoint
             </summary>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AuthenticationsController.#ctor(NetCore.Contracts.UnitOfWork.IUnitOfWork,NetCore.Contracts.Logger.ILoggerManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="uow">Unit of work service</param>
+            <param name="log">logger service</param>
+        </member>
+        <member name="M:NetCore.API.Controllers.V1.AuthenticationsController.Create(NetCore.Data.Access.DataAccessModels.Dashboards.Users)">
+            <summary>
+            Create ne user session
+            </summary>
+            <param name="user">user data to authneticate</param>
+            <returns>JWT</returns>
         </member>
         <member name="T:NetCore.API.Controllers.V1.CustomersController">
             <summary>
@@ -54,6 +123,114 @@
             <summary>
             Users in the application
             </summary>
+        </member>
+        <member name="T:NetCore.API.Program">
+            <summary>
+            Configure application builder/startup
+            </summary>
+        </member>
+        <member name="M:NetCore.API.Program.Main(System.String[])">
+            <summary>
+            startup
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:NetCore.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Set the configuration for the aplication start
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NetCore.API.Startup">
+            <summary>
+            contaiins all application configurations
+            </summary>
+        </member>
+        <member name="M:NetCore.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Set global configurations
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:NetCore.API.Startup.Configuration">
+            <summary>
+            Service to inyect configurations
+            </summary>
+        </member>
+        <member name="M:NetCore.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            set all services to use in the application
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCore.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            initialize all services
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureIISIntegration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureLoggerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureSqlContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="config"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureMySqlContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="config"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ConfigureRepositoryWrapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.AddAuthenticationJWT(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:NetCoreAPI.Extensions.ServiceExtensions.ServiceExtensions.ApiDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
         </member>
     </members>
 </doc>

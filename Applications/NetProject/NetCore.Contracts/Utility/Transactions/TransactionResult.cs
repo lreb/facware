@@ -55,7 +55,7 @@ namespace Core.Contract.Utility.Transactions
          * @param message
          *            Service call message
          */
-        private TransactionResult(Result code, String message)
+        public TransactionResult(Result code, String message)
         {
             this._code = code;
             this._message = message;
@@ -88,7 +88,7 @@ namespace Core.Contract.Utility.Transactions
          * @param message
          *            Service call message
          */
-        private TransactionResult(Result code, String message, Object data)
+        public TransactionResult(Result code, String message, Object data)
         {
             this._code = code;
             this._message = message;
@@ -122,7 +122,7 @@ namespace Core.Contract.Utility.Transactions
          * @param message
          *            Service call message
          */
-        private TransactionResult(Result code, String message, String eventId)
+        public TransactionResult(Result code, String message, String eventId)
         {
             this._code = code;
             this._message = message;
@@ -160,7 +160,7 @@ namespace Core.Contract.Utility.Transactions
          * @param resultData
          *            Service call resultData
          */
-        private TransactionResult(Result code, String message, String eventId, Object data)
+        public TransactionResult(Result code, String message, String eventId, Object data)
         {
             this._code = code;
             this._message = message;

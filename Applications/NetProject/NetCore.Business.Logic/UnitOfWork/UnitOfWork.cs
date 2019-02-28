@@ -1,8 +1,10 @@
 ﻿using System;
 using NetCore.Business.Logic.Repositories;
 using NetCore.Business.Logic.Repositories.Dashboards;
+using NetCore.Business.Logic.Services.Dashboards;
 using NetCore.Contracts.Entity;
 using NetCore.Contracts.Entity.Dashboards;
+using NetCore.Contracts.Entity.Dashboards.Services;
 using NetCore.Contracts.UnitOfWork;
 using NetCore.Data.Access;
 using NetCore.Data.Access.DataAccessModels.Dashboards;
@@ -24,12 +26,30 @@ namespace NetCore.Business.Logic.UnitOfWork
         private IShiftsRepository _shift;
         private IUsersRepository _user;
 
+        private IStoreProceduresRepository _storeProcedure;
+
+        private IAreasPropertiesService _areasPropertiesService;
+
         public IAreasRepository Area { get { if (_area == null) { _area = new AreasRepository(this._dataAccessContext); } return _area; } }
         public IAreasPropertiesRepository AreaProperty { get { if (_areaProperty == null) { _areaProperty = new AreasPropertiesRepository(this._dataAccessContext); } return _areaProperty; } }
         public ICustomersRepository Customer { get { if (_customer == null) { _customer = new CustomersRepository(this._dataAccessContext); } return _customer; } }
         public IShiftsRepository Shift { get { if (_shift == null) { _shift = new ShiftsRepository(this._dataAccessContext); } return _shift; } }
         public IUsersRepository User { get { if (_user == null) { _user = new UsersRepository(this._dataAccessContext); } return _user; } }
+        // store procedure
+        public IStoreProceduresRepository StoreProcedure { get { if (_storeProcedure == null) { _storeProcedure = new StoreProceduresRepository(this._dataAccessContext); } return _storeProcedure; } }
 
+        // services
+        public IAreasPropertiesService AreasPropertiesService
+        {
+            get
+            {
+                if (_areasPropertiesService == null)
+                {
+                    _areasPropertiesService = new AreasPropertiesService(this._dataAccessContext, this.Area, this.AreaProperty);
+                }
+                return _areasPropertiesService;
+            }
+        }
         // SP
 
         // Service or engines

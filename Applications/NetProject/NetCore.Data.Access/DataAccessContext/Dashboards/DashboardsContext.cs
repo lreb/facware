@@ -51,13 +51,6 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Areas_Customers");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Areas)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Areas_Users");
-                entity.HasMany<AreasProperties>();
             });
 
             modelBuilder.Entity<AreasProperties>(entity =>
@@ -77,12 +70,6 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
                     .HasForeignKey(d => d.AreaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_AreasProperties_Areas");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AreasProperties)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_AreasProperties_Users");
             });
 
             modelBuilder.Entity<Customers>(entity =>
@@ -117,9 +104,13 @@ namespace NetCore.Data.Access.DataAccessModels.Dashboards
 
                 entity.Property(e => e.Enabled).HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.Hash).IsUnicode(false);
+
                 entity.Property(e => e.LastName).IsUnicode(false);
 
                 entity.Property(e => e.Name).IsUnicode(false);
+
+                entity.Property(e => e.Salt).IsUnicode(false);
 
                 entity.Property(e => e.UpdatedDate).HasDefaultValueSql("(getdate())");
             });
